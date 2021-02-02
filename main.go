@@ -423,13 +423,13 @@ func main() {
 	sortTicket(ticket1)
 	ticket2 := ticket[3:6]
 	sortTicket(ticket2)
-	ticket3 := ticket[:3]
+	ticket3 := ticket[6:9]
 	sortTicket(ticket3)
-	ticket4 := ticket[3:6]
+	ticket4 := ticket[9:12]
 	sortTicket(ticket4)
-	ticket5 := ticket[:3]
+	ticket5 := ticket[12:15]
 	sortTicket(ticket5)
-	ticket6 := ticket[3:6]
+	ticket6 := ticket[15:18]
 	sortTicket(ticket6)
 
 	fmt.Println("")
