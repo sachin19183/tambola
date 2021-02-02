@@ -36,7 +36,7 @@ func main() {
 				colCount[cl]++
 			}
 		}
-		fmt.Printf(" column %d count is %d\n . ", cl, colCount[cl])
+		//fmt.Printf(" column %d count is %d\n . ", cl, colCount[cl])
 		if colCount[cl] < allowedColCount[cl] {
 			minCol = append(minCol, cl)
 			//fmt.Printf("%d column is in deficiency\n", cl)
@@ -103,19 +103,15 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twice in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 
@@ -160,19 +156,15 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twice in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 
@@ -216,19 +208,15 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twice in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 	}
@@ -271,19 +259,15 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twce in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 	}
@@ -327,19 +311,15 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twce in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 	}
@@ -383,25 +363,28 @@ func main() {
 							colCount[c1]--
 							tmpMap[c2+1] = 0
 							colCount[c2]++
-							//breakPoint = true
+
 							break // only one key to be replaced in this for loop
 
 						}
 					}
 				} else {
-					fmt.Printf(" %d is present more than once in this ticket \n", c2)
+					fmt.Printf(" %d is present more than twice in this ticket \n", c2)
 				}
-				/*
-					if breakPoint == true {
-						break
-					}
-				*/
+
 			}
 		}
 	}
 	fmt.Println(arrPos)
 	fmt.Println(colCount)
 	var ticket [18][9]int
+	/*
+		for ii := 0; ii < 18; ii++ {
+			for jj := 0; jj < 9; jj++ {
+				ticket[ii][jj] = -1
+			}
+		}
+	*/
 	randSlice1 := []int{3, 5, 2, 1, 6, 8, 7, 9, 4}
 	randSlice2 := []int{13, 15, 12, 14, 11, 16, 18, 17, 19, 10}
 	randSlice3 := []int{23, 25, 24, 22, 20, 21, 26, 28, 27, 29}
@@ -421,18 +404,33 @@ func main() {
 		iter2 := 0
 		for rwc := 0; rwc < 18; rwc++ {
 			tpMap := arrPos[rwc] // take the row snapshot
-			fmt.Println("row position snapshot", tpMap)
+			//fmt.Println("row position snapshot", tpMap)
 			_, ok := tpMap[iter+1] // check if the col position is marked in this row
 			if ok == true {        // if yes, store the random number value for this col in this ticket position
-				fmt.Printf(" rw: %d| iter: %d | iter2: %d \n", rwc, iter, iter2)
+				//fmt.Printf(" rw: %d| iter: %d | iter2: %d \n", rwc, iter, iter2)
 				ticket[rwc][iter] = randTmp[iter2]
 				tpMap[iter+1] = randTmp[iter2]
 				iter2++
 			}
 		}
-		fmt.Printf("ticket after finishing colum %d ", iter)
-		fmt.Println(ticket)
+		//fmt.Printf("ticket after finishing colum %d ", iter)
+		//fmt.Println(ticket)
+		printArr(ticket)
 	}
+
+	// sort numbers in each ticket
+	ticket1 := ticket[:3]
+	sortTicket(ticket1)
+	ticket2 := ticket[3:6]
+	sortTicket(ticket2)
+	ticket3 := ticket[:3]
+	sortTicket(ticket3)
+	ticket4 := ticket[3:6]
+	sortTicket(ticket4)
+	ticket5 := ticket[:3]
+	sortTicket(ticket5)
+	ticket6 := ticket[3:6]
+	sortTicket(ticket6)
 
 	fmt.Println("")
 	printArr(ticket)
@@ -446,4 +444,50 @@ func printArr(ad [18][9]int) {
 		fmt.Println(" ")
 	}
 	fmt.Println("--------------------------")
+}
+
+func sortTicket(ticket1 [][9]int) {
+	fmt.Println(ticket1)
+	fmt.Println("------------------------------------------------------------------")
+	//fmt.Println(ticket)
+	//fmt.Println("--------------------*********************")
+
+	for col := 0; col < 9; col++ {
+		if ticket1[0][col] != 0 {
+			if ticket1[1][col] != 0 && ticket1[0][col] > ticket1[1][col] {
+				tmp := ticket1[0][col]
+				ticket1[0][col] = ticket1[1][col]
+				ticket1[1][col] = tmp
+			}
+		}
+		if ticket1[1][col] != 0 && ticket1[2][col] != 0 {
+			if ticket1[1][col] > ticket1[2][col] {
+				tmp := ticket1[1][col]
+				ticket1[1][col] = ticket1[2][col]
+				ticket1[2][col] = tmp
+				if ticket1[0][col] != 0 {
+					if ticket1[1][col] != 0 && ticket1[0][col] > ticket1[1][col] {
+						tmp := ticket1[0][col]
+						ticket1[0][col] = ticket1[1][col]
+						ticket1[1][col] = tmp
+					}
+				}
+			}
+		}
+		if ticket1[0][col] != 0 && ticket1[1][col] == 0 && ticket1[2][col] != 0 {
+			if ticket1[0][col] > ticket1[2][col] {
+				tmp := ticket1[0][col]
+				ticket1[0][col] = ticket1[2][col]
+				ticket1[2][col] = tmp
+			}
+		}
+	}
+	fmt.Println("Result is:")
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 9; j++ {
+			fmt.Printf(" %d ", ticket1[i][j])
+		}
+		fmt.Println(" ")
+	}
+	fmt.Println("------------------------------------------------------------------")
 }

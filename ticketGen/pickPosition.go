@@ -164,22 +164,22 @@ func GenerateTicket() (map[int]int, map[int]int, map[int]int) {
 			}
 		}
 	}
-
-	fmt.Println("\nfinal outcome ")
-	fmt.Println(" ")
-	for key := range row1 {
-		fmt.Printf("row1[%d] ", key)
-	}
-	fmt.Println(" ")
-	for key := range row2 {
-		fmt.Printf("row2[%d] ", key)
-	}
-	fmt.Println(" ")
-	for key := range row3 {
-		fmt.Printf("row3[%d] ", key)
-	}
-	fmt.Println(" ")
-
+	/*
+		fmt.Println("\nfinal outcome ")
+		fmt.Println(" ")
+		for key := range row1 {
+			fmt.Printf("row1[%d] ", key)
+		}
+		fmt.Println(" ")
+		for key := range row2 {
+			fmt.Printf("row2[%d] ", key)
+		}
+		fmt.Println(" ")
+		for key := range row3 {
+			fmt.Printf("row3[%d] ", key)
+		}
+		fmt.Println(" ")
+	*/
 	// there could also be a case when all the colums are covered across three rows ,
 	//yet the total number of colums allocated to each row is less than 5
 	// So we have two different conditions:
